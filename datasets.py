@@ -38,7 +38,7 @@ def random_resize(images, min_size=288, max_size=448):
 
 class ImageFolder(Dataset):
     def __init__(self, folder_path, img_size=416):
-        self.files = sorted(glob.glob("%s/*.png" % folder_path))
+        self.files = sorted(glob.glob("%s/*.jpg" % folder_path))
         self.img_size = img_size
 
     def __getitem__(self, index):
@@ -62,7 +62,8 @@ class ListDataset(Dataset):
             self.img_files = file.readlines()
 
         self.label_files = [
-            path.replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
+            path.replace("/home/adminuser/labstorage/images", "/home/adminuser/labwork/CUSTOM/data/JS/labels").replace(".png", ".txt").replace(".jpg", ".txt")
+            # path.replace("images", "labels").replace(".png", ".txt").replace(".jpg", ".txt")
             for path in self.img_files
         ]
         self.img_size = img_size
